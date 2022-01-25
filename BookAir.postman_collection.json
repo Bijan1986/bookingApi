@@ -1,0 +1,92 @@
+{
+	"info": {
+		"_postman_id": "86c58130-f5b4-464d-b0d4-1cc69df3b74f",
+		"name": "BookAir",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Upload CSV file to database",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/shrut/Desktop/test.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/upload",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get people by name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/getByName/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getByName",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPeopleByPage",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/getAllPeopleByPage",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getAllPeopleByPage"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllPeople",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/getAllPeople",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getAllPeople"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
