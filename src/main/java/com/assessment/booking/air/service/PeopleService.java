@@ -2,6 +2,7 @@ package com.assessment.booking.air.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -43,8 +44,8 @@ public class PeopleService {
 	        }
 	}
 	
-	public List<People> getPeopleByName(String name){
-		return peopleRepository.searchByName(name);
+	public  Optional<People> getPeopleByFullName(String fullName){
+		return peopleRepository.searchByFullName(fullName);
 	}
 
 }

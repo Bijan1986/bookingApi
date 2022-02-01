@@ -1,0 +1,115 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Lato", sans-serif;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 1.7;
+	color: white;
+	background-color: black;
+	padding: 30px;
+}
+
+.content {
+	margin: auto;
+	width: 40%;
+	border: 3px solid #73AD21;
+	padding: 10px;
+	font-size: 20px;
+	width: 60%;
+}
+
+.nameField {
+	height: 30px;
+	width: 50%;
+	font-size: 20px;
+}
+
+.searchCustomer {
+	margin: auto;
+	height: 30px;
+	width: 60%;
+	font-size: 20px;
+}
+
+.styled-table {
+	border-collapse: collapse;
+	margin: 25px 0;
+	font-size: 0.9em;
+	font-family: sans-serif;
+	min-width: 80%;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+	background-color: #009879;
+	color: #ffffff;
+	text-align: left;
+}
+
+.styled-table th, .styled-table td {
+	padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.btnStyle{
+	width: 900px;
+	padding-bottom: 20px;
+}
+
+.withdrawCash{
+	margin: auto;
+	height: 30px;
+	width: 30%;
+	font-size: 20px;
+	display:inline-block;
+	margin-right: 300px;
+	border: 2px solid  #009879;
+	background-color: #009879;
+	color: #ffffff;
+}
+
+.backStyle{
+	margin: auto;
+	height: 30px;
+	width: 30%;
+	font-size: 20px;
+	display:inline-block;
+	border: 2px solid  #009879;
+	background-color: #009879;
+	color: #ffffff;
+}
+
+a:link, a:visited {
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+a:hover, a:active {
+    background-color: red;
+}
+
+.form-error{
+	color:red;
+	font-weight: bold;
+}
+
+

@@ -22,7 +22,7 @@ import com.univocity.parsers.csv.CsvParser;
 import com.univocity.parsers.csv.CsvParserSettings;
 
 @RestController
-public class BookAirController {
+public class BookAirRestController {
 
 	@Autowired
 	private PeopleService peopleService;
@@ -36,8 +36,8 @@ public class BookAirController {
 		CsvParser parser = new CsvParser(setting);
 		List<Record> allRecords = parser.parseAllRecords(inputStream);
 		int counter = 1;
-		for(Record item:allRecords) {
-			if(item != null) {
+		for (Record item : allRecords) {
+			if (item != null) {
 				People people = new People();
 				people.setId(Long.valueOf(counter));
 				people.setFullName(item.getString("name"));
@@ -45,31 +45,28 @@ public class BookAirController {
 				peopleList.add(people);
 				counter++;
 			}
-			
+
 		}
-		
+
 		return peopleService.saveAllItems(peopleList);
 	}
-	
-	@GetMapping("/getByName/{name}")
-	public List<People> getPeopleByName(@PathVariable("name")String name){
-		return peopleService.getPeopleByName("name");
+
+	@GetMapping("/getByFullName/{fullName}")
+	public People getPeopleByFullName(@PathVariable("fullName") String fullName) {
+		return peopleService.getPeopleByFullName(fullName).get();
 	}
-	
+
 	@GetMapping("/getAllPeople")
-	public List<People> getAllPeople(){
+	public List<People> getAllPeople() {
 		return peopleService.getAllPeople();
 	}
-	
-	 @GetMapping("/getAllPeopleByPage")
-	    public ResponseEntity<List<People>> getPeopleByPage(
-	                        @RequestParam(defaultValue = "0") Integer pageNo,
-	                        @RequestParam(defaultValue = "4") Integer pageSize,
-	                        @RequestParam(defaultValue = "id") String sortBy)
-	    {
-	        List<People> list = peopleService.getAllPeopleByPage(pageNo, pageSize, sortBy);
-	 
-	        return new ResponseEntity<List<People>>(list, new HttpHeaders(), HttpStatus.OK);
-	    }
+
+	@GetMapping("/getAllPeopleByPage")
+	public ResponseEntity<List<People>> getPeopleByPage(@RequestParam(defaultValue = "0") Integer pageNo,
+			@RequestParam(defaultValue = "4") Integer pageSize, @RequestParam(defaultValue = "id") String sortBy) {
+		List<People> list = peopleService.getAllPeopleByPage(pageNo, pageSize, sortBy);
+
+		return new ResponseEntity<List<People>>(list, new HttpHeaders(), HttpStatus.OK);
+	}
 
 }
