@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Customer Details</title>
+<link
+	href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
+	rel="stylesheet">
+<link th:href="@{/css/style.css}" href="/css/style.css" rel="stylesheet"
+	type="text/css" />
+</head>
+<body>
+
+	<form action="#" th:object="${clients}" method="get">
+
+		<div class="content">
+			<div class="header">
+				<h1>Client details</h1>
+			</div>
+			<div class="header">
+				<div class="tableStyle" th:if="${ not#lists.isEmpty(clients)}">
+					<table class="styled-table">
+						<thead>
+							<tr>
+								<th>Client Full Name</th>
+								<th>Client Image</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="client : ${clients}">
+								<td th:text="${client.fullName}">Full Name of the client</td>
+								<td><img th:src="${client.image}" alt="Client Image"></td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<a th:href="@{/}">Home</a>
+	</form>
+
+</body>
+</html>

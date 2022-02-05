@@ -1,17 +1,17 @@
 package com.assessment.booking.air.controller;
 
+import java.util.List;
 import java.util.Optional;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.assessment.booking.air.model.People;
@@ -25,34 +25,41 @@ public class CustomerManagementController {
 	private PeopleService peopleService;
 
 	@GetMapping("/")
-	public String showForm(Model theModel) {
-		theModel.addAttribute("client", new People());
-		return "index";
+	public String showForm(Model model) {
+		model.addAttribute("client", new People());
+		return findPaginatedPeople(1, "fullName", "asc", model);
 	}
 
-	@GetMapping("/customer")
-	public String showCustomer(@Valid @ModelAttribute("client") People client, BindingResult result, Errors errors,
-			RedirectAttributes redirectAttributes, Model model) {
-		if (result.hasErrors()) {
-			return "index";
+	@GetMapping("/customerSearch")
+	public String showNewEmployeeForm(@ModelAttribute("client") People client, RedirectAttributes redirectAttributes,
+			Model model) {
+		Optional<List<People>> clients = peopleService.getPeopleByName(client.getFullName());
+		if (clients.isPresent()) {
+			model.addAttribute("clients", clients.get());
+			return "clientSearch";
 		} else {
-			Optional<People> peopleByFullNameSearchResult = peopleService.getPeopleByFullName(client.getFullName());
-			if (peopleByFullNameSearchResult.isPresent()) {
-				People selectedPeople = peopleByFullNameSearchResult.get();
-				model.addAttribute("selectedClient", selectedPeople);
-
-				model.addAttribute("fullName", selectedPeople.getFullName());
-				model.addAttribute("imageUrl", selectedPeople.getImage());
-			} else {
-				errors.rejectValue("id", "client " + client.getFullName() + " is unavailable");
-				redirectAttributes.addFlashAttribute("errorMessage",
-						"unable to find client with full name :" + client.getFullName());
-				return "redirect:/";
-			}
-
+			return "redirect:/";
 		}
 
-		return "customerDetails";
 	}
 
+	@GetMapping("/page/{pageNo}")
+	public String findPaginatedPeople(@PathVariable(value = "pageNo") int pageNo,
+			@RequestParam("sortField") String sortField, @RequestParam("sortDir") String sortDir, Model model) {
+		int pageSize = 20;
+
+		Page<People> page = peopleService.findPaginatedPeople(pageNo, pageSize, sortField, sortDir);
+		List<People> listEmployees = page.getContent();
+
+		model.addAttribute("currentPage", pageNo);
+		model.addAttribute("totalPages", page.getTotalPages());
+		model.addAttribute("totalItems", page.getTotalElements());
+
+		model.addAttribute("sortField", sortField);
+		model.addAttribute("sortDir", sortDir);
+		model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
+
+		model.addAttribute("listEmployees", listEmployees);
+		return "index";
+	}
 }

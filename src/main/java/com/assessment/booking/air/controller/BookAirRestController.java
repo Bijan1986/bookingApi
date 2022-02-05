@@ -51,9 +51,9 @@ public class BookAirRestController {
 		return peopleService.saveAllItems(peopleList);
 	}
 
-	@GetMapping("/getByFullName/{fullName}")
-	public People getPeopleByFullName(@PathVariable("fullName") String fullName) {
-		return peopleService.getPeopleByFullName(fullName).get();
+	@GetMapping("/getByName/{fullName}")
+	public List<People> getPeopleByFullName(@PathVariable("fullName") String fullName) {
+		return peopleService.getPeopleByName(fullName).get();
 	}
 
 	@GetMapping("/getAllPeople")
