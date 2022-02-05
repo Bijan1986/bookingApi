@@ -50,7 +50,9 @@ public class CustomerManagementController {
 
 		Page<People> page = peopleService.findPaginatedPeople(pageNo, pageSize, sortField, sortDir);
 		List<People> listEmployees = page.getContent();
-
+		if(model.getAttribute("client") == null) {
+			model.addAttribute("client", new People());
+		}
 		model.addAttribute("currentPage", pageNo);
 		model.addAttribute("totalPages", page.getTotalPages());
 		model.addAttribute("totalItems", page.getTotalElements());
