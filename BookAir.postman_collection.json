@@ -16,16 +16,16 @@
 						{
 							"key": "file",
 							"type": "file",
-							"src": "/C:/Users/shrut/Desktop/test.csv"
+							"src": "/C:/DEV/Bijan/workspace/spring/BookAir/src/main/resources/static/people.csv"
 						}
 					]
 				},
 				"url": {
-					"raw": "localhost:8080/upload",
+					"raw": "localhost:8083/upload",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "8083",
 					"path": [
 						"upload"
 					]
@@ -39,14 +39,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/getByName/1",
+					"raw": "localhost:8083/getByName/T",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "8083",
 					"path": [
 						"getByName",
-						"1"
+						"T"
 					]
 				}
 			},
@@ -58,13 +58,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/getAllPeopleByPage",
+					"raw": "localhost:8083/getAllPeopleByPage/2",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "8083",
 					"path": [
-						"getAllPeopleByPage"
+						"getAllPeopleByPage",
+						"2"
 					]
 				}
 			},
@@ -76,11 +77,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/getAllPeople",
+					"raw": "localhost:8083/getAllPeople",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "8083",
 					"path": [
 						"getAllPeople"
 					]

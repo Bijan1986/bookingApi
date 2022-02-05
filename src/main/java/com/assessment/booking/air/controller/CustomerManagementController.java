@@ -34,7 +34,7 @@ public class CustomerManagementController {
 	public String showNewEmployeeForm(@ModelAttribute("client") People client, RedirectAttributes redirectAttributes,
 			Model model) {
 		Optional<List<People>> clients = peopleService.getPeopleByName(client.getFullName());
-		if (clients.isPresent()) {
+		if (!clients.get().isEmpty()) {
 			model.addAttribute("clients", clients.get());
 			return "clientSearch";
 		} else {
@@ -50,7 +50,7 @@ public class CustomerManagementController {
 
 		Page<People> page = peopleService.findPaginatedPeople(pageNo, pageSize, sortField, sortDir);
 		List<People> listEmployees = page.getContent();
-		if(model.getAttribute("client") == null) {
+		if (model.getAttribute("client") == null) {
 			model.addAttribute("client", new People());
 		}
 		model.addAttribute("currentPage", pageNo);

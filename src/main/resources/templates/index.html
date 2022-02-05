@@ -8,6 +8,8 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
+	<link th:href="@{/css/style.css}" href="/css/style.css" rel="stylesheet"
+	type="text/css" />
 
 </head>
 <body>
@@ -15,17 +17,15 @@
 	<div class="container my-2">
 		<form action="#" th:action="@{/customerSearch}" th:object="${client}"
 			method="get">
-			<div class="content">
+			<div class="container my-2">
 				<div class="header">
 					<h1>Search customer</h1>
 				</div>
 				<div class="inputFields">
 					<div class="textfields">
-						<label>Customer Name</label> <input type="text"
-							th:field="*{fullName}" placeholder="enter customer name"
-							class="searchCustomer"> <br> <br> <input
-							type="submit" value="search customer"
-							class="btn btn-primary btn-sm mb-3">
+						<label>Customer Name</label> 
+						<input type="text" th:field="*{fullName}" placeholder="Enter customer name"	class="searchCustomer"> <br> <br> 
+						<input type="submit" value="search customer" class="btn btn-primary btn-sm mb-3">
 					</div>
 				</div>
 
@@ -49,13 +49,13 @@
 			<!-- <a th:href="@{/showCustomerSearchForm}"
 			class="btn btn-primary btn-sm mb-3"> Search Customer </a> -->
 
-			<table border="1" class="table table-striped table-responsive-md">
+			<table border="1" class="styled-table"><!-- "table table-striped table-responsive-md" -->
 				<thead>
 					<tr>
-						<th><a
+						<th><a class= "tableHeader"
 							th:href="@{'/page/' + ${currentPage} + '?sortField=firstName&sortDir=' + ${reverseSortDir}}">
 								Customer Full Name</a></th>
-						<th><a
+						<th><a class="tableHeader"
 							th:href="@{'/page/' + ${currentPage} + '?sortField=lastName&sortDir=' + ${reverseSortDir}}">
 								Customer Image</a></th>
 					</tr>

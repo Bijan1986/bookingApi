@@ -13,7 +13,7 @@ import com.assessment.booking.air.model.People;
 @Repository
 public interface PeopleRepository extends JpaRepository<People, Long> {
 
-	@Query("select p from PEOPLE p where p.fullName like %:name%")
+	@Query("select p from PEOPLE p where p.fullName like :name")
 	Optional<List<People>> searchByName(@Param("name")String fullName);
 
 }

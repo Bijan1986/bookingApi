@@ -32,7 +32,7 @@ body {
 .searchCustomer {
 	margin: auto;
 	height: 30px;
-	width: 60%;
+	width: 40%;
 	font-size: 20px;
 }
 
@@ -94,22 +94,22 @@ body {
 	color: #ffffff;
 }
 
-a:link, a:visited {
+.tableHeader{
+	color: white;
+}
+
+.form-error{
+	color:red;
+	font-weight: bold;
+}
+
+.goBackToHome {
     background-color: #f44336;
     color: white;
     padding: 14px 25px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-}
-
-a:hover, a:active {
-    background-color: red;
-}
-
-.form-error{
-	color:red;
-	font-weight: bold;
 }
 
 
